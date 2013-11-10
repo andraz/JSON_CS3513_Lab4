@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMS</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/style1.css" class="style-css" />
+    <link rel="stylesheet" type="text/css" href="css/style2.css" class="style-css" />
+    <link rel="stylesheet" type="text/css" href="css/style3.css" class="style-css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="javascript/script.js" ></script>
+</head>
+<body>
+<div class="row top-line">
+    <div class="col-md-5 col-md-offset-2">
+        <div class="title">
+            CMS
+        </div>
+
+    </div>
+    <div class="col-md-3 col-md-offset-2">
+        <div class="btn-group pull-right">
+            <button id="style1" type="button" class="btn btn-default styleButton">Style 1</button>
+            <button id="style2" type="button" class="btn btn-default styleButton" >Style 2</button>
+            <button id="style3" type="button" class="btn btn-default styleButton" >Style 3</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="tab-pane" id="ajax">
+            <ul class="nav nav-pills nav-stacked" id="menuListAjax">
+                <li class="menuLink active"><a href="#"  onclick="menuClickAjax(this);loadContent('home.php')">Home</a></li>
+                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('cv.php')">CV</a></li>
+                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('personal.php')">Personal</a></li>
+                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('contact.txt')">Contact</a></li>
+                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('links.php')">Links</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+
+        <div class="content-my">
+            <div  id="content">
+
+
+            </div>
+            <a id="toggleButton" >Read more...</a>
+        </div>
+
+        <div class="alert alert-success" id="statusLine">
+        </div>
+        <small class="copyright">&copy; Cork 2013</small>
+    </div>
+
+</div>
+</body>
+</html>
