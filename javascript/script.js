@@ -1,9 +1,9 @@
 selectStylesheet = function(styleId){
     var links = $( ".style-css" );
-    links.each(function( index ) {
+    $(links).each(function( index ) {
         this.disabled = true;
     });
-    links.get(styleId).disabled = false;
+    $(links).get(styleId).disabled = false;
 }
 
 
@@ -17,7 +17,7 @@ loadContent = function(file){
     $("#content").html("<img src='../css/ajax-loader.gif' alt='ajax_loader' class='ajaxLoader' />");
     $("#toggleButton").hide();
     var status = $("#statusLine");
-        $.get( "content/php_content/"+file, function(data) {
+    $.get( "content/php_content/"+file, function(data) {
         $("#content").html(data);
         status.removeClass("alert-danger");
         status.addClass("alert-success");
@@ -30,6 +30,7 @@ loadContent = function(file){
         status.addClass("alert-danger");
         status.text("Fail loading page!");
         $("#content").html(previousText);
+        $("#toggleButton").show();
     })
 }
 
