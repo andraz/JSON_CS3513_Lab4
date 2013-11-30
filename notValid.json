@@ -1,0 +1,103 @@
+[
+    {
+        "title": "Programming Computer Vision with Python: Tools and algorithms for analyzing images",
+        "abstract" : "If you want a basic understanding of computer vision underlying theory and algorithms, this hands-on introduction is the ideal place to start. You will learn techniques for object recognition, 3D reconstruction, stereo imaging, augmented reality, and other computer vision applications as you follow clear examples written in Python.",
+        "author": [{ "firstNam": "Jan Erik", "lastName": "Solem"}],
+        "url": "http://www.amazon.com/Programming-Computer-Vision-Python-algorithms/dp/1449316549",
+        "rating": 4,
+        "valid": true,
+        "tags": [ "Python", "Computer vision","Machine learning"]
+    },
+    {
+        "title": "'Hadoop Illuminated' Book",
+        "abstract" : "This book is our experiment in making Hadoop knowledge available to a wider audience. We want this book to serve as a gentle introduction to Big Data and Hadoop. No deep technical knowledge is needed to go through the book. It can be a bed time read :-) The book is freely available, it is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.'Hadoop Illuminated' is a work in progress. It is a 'living book'. We will keep updating the book to reflect the fast moving world of Big Data and hadoop. So keep checking back.",
+        "author": [{ "firstName": "Alan Gates", "lastName": "Kerzner"},{ "firstName": "Sujee", "lastName": "Maniyam"}],
+        "url": "http://hadoopilluminated.com/hadoop_book/singlepage/index.html#Audience",
+        "rating": 2,
+        "valid": false,
+        "tags": [ "Hadoop", "Big Data","Map Reduce"]
+    },
+    {
+        "title": "Programming Pig",
+        "abstract" : "This book is intended for Pig programmers, new and old. Those who have never used Pig will find introductory material on how to run Pig and to get them started writing Pig Latin scripts. For seasoned Pig users, this book covers almost every feature of Pig: different modes it can be run in, complete coverage of the Pig Latin language, and how to extend Pig with your own User Defined Functions (UDFs). Even those who have been using Pig for a long time are likely to discover features they have not used before.",
+        "author": [{ "firstName": "Alan", "lastName": "Gates"}],
+        "url": "http://chimera.labs.oreilly.com/books/1234000001811/index.html",
+        "rating": 3,
+        "valid": false,
+        "tags": [ "Pig", "Hadoop","Map Reduce","Big Data"]
+    },
+    {
+        "title": "Android Programming: The Big Nerd Ranch Guide (Big Nerd Ranch Guides)",
+        "abstract" : "Android Programming: The Big Nerd Ranch Guide: is an introductory Android book for programmers with Java experience. Based on Big Nerd Ranch’s popular Android Bootcamp course, this guide will lead you through the wilderness using hands-on example apps combined with clear explanations of key concepts and APIs. This book focuses on practical techniques for developing apps compatible with all versions of Android widely used today (Android 2.2 - 4.2). Write and run code every step of the way – creating apps that catalog crime scenes, browse photos, track your jogging route, and more. Each chapter and app has been designed and tested to provide the knowledge and experience you need to get started in Android development.",
+        "author": [{ "firstName": "Bill", "lastName": "Phillips"},{ "firstName": "Brian", "lastName": "Hardy"}],
+        "url": "http://www.amazon.com/Android-Programming-Ranch-Guide-Guides/dp/0321804333/ref=sr_1_1?s=books&ie=UTF8&qid=1385809686&sr=1-1&keywords=android",
+        "rating": 4,
+        "valid": true,
+        "tags": [ "Android", "Java","Mobile Application"]
+    },
+    {
+        "title": "iOS Programming: The Big Nerd Ranch Guide (3rd Edition) (Big Nerd Ranch Guides)",
+        "abstract" : "Updated and expanded to cover iOS 5 and Xcode 4.3, iOS Programming: The Big Nerd Ranch Guide leads you through the essential concepts, tools, and techniques for developing iOS applications. After completing this book, you will have the understanding, the know-how, and the confidence you need to tackle iOS projects of your own. Based on Big Nerd Ranch’s popular iOS Bootcamp course and its well-tested materials and methodology, this best-selling guide teaches iOS concepts and coding in tandem. The result is instruction that is relevant and useful. Throughout the book, the authors clearly explain what’s important to know and share their insights into the larger context of the iOS platform. This gives you a real understanding of how iOS development works, the many features that are available, and when and where to apply what you’ve learned.",
+        "author": [{ "firstName": "Joe", "lastName": "Conway"},{ "firstName": "Aaron", "lastName": "Hillegass"}],
+        "url": "http://www.amazon.com/iOS-Programming-Ranch-Guide-Guides/dp/0321821521/ref=sr_1_1?s=books&ie=UTF8&qid=1385809841&sr=1-1&keywords=iOS",
+        "rating": 5,
+        "valid": true,
+        "tags": [ "iOS", "Objective-C","Mobile Application"]
+    },
+    {
+        "title": "Java, A Beginner's Guide, 5th Edition",
+        "abstract" : "Learn the fundamentals of Java programming in no time from bestselling programming author Herb Schildt. Fully updated to cover Java Platform, Standard Edition 7 (Java SE 7), Java: A Beginner's Guide, Fifth Edition starts with the basics, such as how to compile and run a Java program, and then discusses the keywords, syntax, and constructs that form the core of the Java language. You'll also find coverage of some of Java's most advanced features, including multithreaded programming and generics. An introduction to Swing concludes the book. Get started programming in Java right away with help from this fast-paced tutorial.",
+        "author": [{ "firstName": "Herbert", "lastName": "Schildt"}],
+        "url": "http://www.amazon.com/Java-Beginners-Guide-Herbert-Schildt/dp/0071606327/ref=sr_1_1?s=books&ie=UTF8&qid=1385810064&sr=1-1&keywords=java",
+        "rating": 3,
+        "valid": true,
+        "tags": [ "Java", "Programming"]
+    },
+    {
+        "title": "Learning Python",
+        "abstract" : "Get a comprehensive, in-depth introduction to the core Python language with this hands-on book. Based on author Mark Lutz’s popular training course, this updated fifth edition will help you quickly write efficient, high-quality code with Python. It’s an ideal way to begin, whether you’re new to programming or a professional developer versed in other languages. Complete with quizzes, exercises, and helpful illustrations, this easy-to-follow, self-paced tutorial gets you started with both Python 2.7 and 3.3— the latest releases in the 3.X and 2.X lines—plus all other releases in common use today. You’ll also learn some advanced language features that recently have become more common in Python code.",
+        "author": [{ "firstName": "Mark", "lastName": "Lutz"}],
+        "url": "http://www.amazon.com/Learning-Python-Mark-Lutz/dp/1449355730/ref=sr_1_1?s=books&ie=UTF8&qid=1385810172&sr=1-1&keywords=python",
+        "rating": 2,
+        "valid": true,
+        "tags": [ "Python", "Programming"]
+    },
+    {
+        "title": "Two Scoops of Django: Best Practices For Django ",
+        "abstract" : "Two Scoops of Django: Best Practices For Django 1.5 is chock-full of material that will help you with your Django projects. We'll introduce you to various tips, tricks, patterns, code snippets, and techniques that we've picked up over the years. This book is great for beginners who have just finished the Django tutorial and developers with intermediate knowledge of Django who want to improve their Django projects.",
+        "author": [{ "firstName": "Daniel", "lastName": "Greenfeld"},{ "firstName": "Audrey", "lastName": "M. Roy"}],
+        "url": "http://www.amazon.com/Two-Scoops-Django-Best-Practices/dp/1481879707/ref=sr_1_2?s=books&ie=UTF8&qid=1385810274&sr=1-2&keywords=django",
+        "rating": 5,
+        "valid": true,
+        "tags": [ "Python", "Web Programming","Django","Server-Side"]
+    },
+    {
+        "title": "Ruby on Rails Tutorial: Learn Web Development with Rails",
+        "abstract" : "Using Rails, developers can build web applications of exceptional elegance and power. Although its remarkable capabilities have made Ruby on Rails one of the world’s most popular web development frameworks, it can be challenging to learn and use. Ruby on Rails™ Tutorial, Second Edition, is the solution. Best-selling author and leading Rails developer Michael Hartl teaches Rails by guiding you through the development of your own complete sample application using the latest techniques in Rails web development. The updates to this edition include all-new site design using Twitter’s Bootstrap; coverage of the new asset pipeline, including Sprockets and Sass; behavior-driven development (BDD) with Capybara and RSpec; better automated testing with Guard and Spork; roll your own authentication with has_secure_password; and an introduction to Gherkin and Cucumber.",
+        "author": [{ "firstName": "Michael", "lastName": "Hartl"}],
+        "url": "http://www.amazon.com/Ruby-Rails-Tutorial-Addison-Wesley-Professional/dp/0321832051/ref=sr_1_1?s=books&ie=UTF8&qid=1385810500&sr=1-1&keywords=ruby+on+rails",
+        "rating": 3,
+        "valid": true,
+        "tags": [ "Ruby","Ruby on Rails","Web Programming","Server-Side"]
+    },
+    {
+        "title": "Professional JavaScript for Web Developers",
+        "abstract" : "This book is aimed at three groups of readers: Experienced object-oriented programming developers looking to learn JavaScript as it relates to traditional OO languages such as Java and C++; Web application developers attempting to enhance site usability; novice JavaScript developers. Nicholas C. Zakas worked with the Web for over a decade. He has worked on corporate intranet applications used by some of the largest companies in the world and large-scale consumer websites such as MyYahoo! and the Yahoo! homepage. He regularly gives talks at companies and conferences regarding front-end best practices and new technology.",
+        "author": [{ "firstName": "Nicholas C.", "lastName": "Zakas"}],
+        "url": "http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas/dp/1118026691/ref=sr_1_7?s=books&ie=UTF8&qid=1385810604&sr=1-7&keywords=javascript",
+        "rating": 1,
+        "valid": true,
+        "tags": [ "Javascript", "Web Programming", "Client-Side"]
+    },
+    {
+        "title": "Theory and Applications for Advanced Text Mining",
+        "abstract" : "Due to the growth of computer technologies and web technologies, we can easily collect and store large amounts of text data. We can believe that the data include useful knowledge. Text mining techniques have been studied aggressively in order to extract the knowledge from the data since late 1990s. Even if many important techniques have been developed, the text mining research field continues to expand for the needs arising from various application fields. This book is composed of 9 chapters introducing advanced text mining techniques. They are various techniques from relation extraction to under or less resourced language. I believe that this book will give new knowledge in the text mining field and help many readers open their new research fields.",
+        "author": [{ "firstName": "Shigeaki", "lastName": "Sakurai"}],
+        "url": "http://www.intechopen.com/books/theory-and-applications-for-advanced-text-mining",
+        "rating": 3,
+        "valid": true,
+        "tags": [ "Text Mining","Web", "Datamining"]
+    }
+
+
+]

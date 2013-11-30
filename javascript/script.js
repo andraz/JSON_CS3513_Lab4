@@ -1,7 +1,7 @@
 var allBooks;
 var selectedBooks;
 var allTags = {};
-
+var onlyValid = false;
 selectStylesheet = function(styleId){
     var links = $( ".style-css" );
     $(links).each(function( index ) {
@@ -11,14 +11,109 @@ selectStylesheet = function(styleId){
 }
 
 
-menuClickAjax = function(element){
-    $(".menuLink").removeClass("active");
-    $(element).parent().addClass("active");
+validateJSON = function(data){
+    isValid = true;
+    $.each(data,function(key, val){
+        if(val.title == undefined || typeof val.title != "string"){
+            isValid = false;
+            return false;
+        }
+        if(val.abstract == undefined ||  typeof val.abstract != "string"){
+            isValid = false;
+            return false;
+        }
+        if(val.url == undefined || typeof val.url != "string"){
+            isValid = false;
+            return false;
+        }
+        if(val.rating == undefined || typeof val.rating != "number"){
+            isValid = false;
+            return false;
+        }
+        if(val.valid == undefined || typeof val.valid != "boolean"){
+            isValid = false;
+            return false;
+        }
+        if(val.author == undefined){
+            isValid = false;
+            return false;
+        }
+        else{
+            if(typeof val.author != "object"){
+                isValid = false;
+                return false;
+            }
+            $.each(val.author,function(k,v){
+                if(v.firstName == undefined || typeof v.firstName != "string"){
+                    isValid = false;
+                    return false;
+                }
+                if(v.lastName == undefined || typeof v.lastName != "string"){
+                    isValid = false;
+                    return false;
+                }
+            });
+        }
+        if(val.tags == undefined){
+            isValid = false;
+            return false;
+        }
+        else{
+            if(typeof val.tags != "object"){
+                isValid = false;
+                return false;
+            }
+            $.each(val.tags,function(k,v){
+                if(typeof v != "string"){
+                    isValid = false;
+                    return false;
+                }
+            });
+        }
+
+    });
+    return isValid;
+}
+
+intersect = function intersection_destructive(a, b)
+{
+    var result = new Array();
+    while( a.length > 0 && b.length > 0 )
+    {
+        if      (a[0] < b[0] ){ a.shift(); }
+        else if (a[0] > b[0] ){ b.shift(); }
+        else /* they're equal */
+        {
+            result.push(a.shift());
+            b.shift();
+        }
+    }
+
+    return result;
+}
+
+fillTags = function(){
+    content = "";
+    $.each(allTags, function(key,val){
+        content += '<button type="button" class="btn btn-primary btn-xs tagButton">'+key+'</button>';
+    });
+    $('#tagsDiv').html(content);
+    $('.tagButton').click(function(){
+        if($(this).hasClass( "btn-primary" )){
+            $(this).removeClass("btn-primary");
+            $(this).addClass("btn-default");
+        }
+        else{
+            $(this).removeClass("btn-default");
+            $(this).addClass("btn-primary");
+        }
+
+    });
 }
 
 updateContent = function(){
     content = "";
-    $.each( allBooks, function( key, val ) {
+    $.each( selectedBooks, function( key, val ) {
         tagsString = "";
         $.each(val.tags, function(k,v){
             allTags[v] = true;
@@ -29,6 +124,9 @@ updateContent = function(){
                 tagsString += ', '+v;
             }
         });
+        if(onlyValid && !val.valid){
+            return true;
+        }
         content += '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">';
         content += val.title;
         content += '</h3></div><div class="panel-body">';
@@ -66,7 +164,8 @@ updateContent = function(){
         content += '</div></div></div></div>';
     });
     $("#content").html(content);
-    $('.abstract').readmore({maxHeight: 20});
+    $('.abstract').readmore({maxHeight: 25});
+    fillTags();
 
 }
 
@@ -76,11 +175,20 @@ loadContent = function(file){
     $("#toggleButton").hide();
     var status = $("#statusLine");
     $.getJSON( file, function(data) {
-        allBooks = data;
-        status.removeClass("label-danger");
-        status.addClass("label-success");
-        status.text("Successful loading page!");
-        updateContent();
+        if(validateJSON(data)){
+            allBooks = data;
+            selectedBooks = data;
+            status.removeClass("label-danger");
+            status.addClass("label-success");
+            status.text("Successful loading page!");
+            updateContent();
+        }
+        else {
+            $("#content").html(previousText);
+            status.removeClass("label-success");
+            status.addClass("label-danger");
+            status.text("Not valid json file!");
+        }
     })
     .fail(function() {
         $("#content").html(previousText);
@@ -90,9 +198,16 @@ loadContent = function(file){
     });
 }
 
+sortSelectedBooks = function(){
+    selectedBooks.sort(function(a,b){return b.rating- a.rating});
+}
+
 $( document ).ready(function() {
     //at the beginning we disable all links, because of firefox(disabled=true doesn't work)
     selectStylesheet(0);
+
+    //loadContent("books.json");
+    loadContent("books.json");
 
     $( ".styleButton" ).click(function(){
         if(this.id == "style2"){
@@ -105,9 +220,29 @@ $( document ).ready(function() {
             selectStylesheet(0)
         }
     });
-    loadContent("books.json");
 
 
+    $('#reloadButton').click(function(){
+        onlyValid = false;
+        loadContent('books.json');
+    });
+
+    $('#sortButton').click(function(){
+        sortSelectedBooks();
+        updateContent();
+    });
+
+    $('#showAll').click(function(evt){
+        evt.preventDefault();
+        onlyValid = false;
+        updateContent();
+    });
+
+    $('#showValid').click(function(evt){
+        evt.preventDefault();
+        onlyValid = true;
+        updateContent();
+    });
 
 });
 

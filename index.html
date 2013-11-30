@@ -34,16 +34,19 @@
 <div class="row">
     <div class="col-md-2">
         <div class="btn-group-vertical btn-block center">
-            <button type="button" class="btn btn-default btn-lg">Reload</button>
-            <button type="button" class="btn btn-default btn-lg">Sort</button>
+            <button id="reloadButton" type="button" class="btn btn-default btn-lg">Reload</button>
+            <button id="sortButton" type="button" class="btn btn-default btn-lg">Sort</button>
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle btn-lg btn-block" data-toggle="dropdown">
                     Show &nbsp;<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Only valid</a></li>
+                    <li ><a href="#" id="showAll">All</a></li>
+                    <li ><a href="#" id="showValid">Only valid</a></li>
                 </ul>
+            </div>
+            <div id="tagsDiv">
+
             </div>
         </div>
     </div>

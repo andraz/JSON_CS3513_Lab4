@@ -10,7 +10,14 @@
 }
 
 .label {
-    margin-left: 5px;
+   margin-left: 5px;
+}
 
+#tagsDiv{
+    margin-top: 10px;
+}
+
+.tagButton {
+margin: 3px;
 }
 

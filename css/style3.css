@@ -40,26 +40,4 @@ a{
     color: #A67400;
 }
 
-.content-my h1,h2,h3,h4,h5,h6,p,small{
-    font-family: Georgia;
-}
 
-.content-my h1{
-    font-size: 60px;
-}
-.content-my p{
-    font-size: 20px;
-}
-
-.content-my small{
-    font-size: 15px;
-}
-
-.copyright{
-    color:#FFD573;
-}
-/*
-.top-line{
-    background-color:#E0E0E0 ;
-}
-*/
