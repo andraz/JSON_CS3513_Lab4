@@ -27,6 +27,16 @@ a{
     background-color:#75EDF8 ;
 }
 
+.panel-default>.panel-heading{
+    background-color:#027F8B;
+    color: #D0F4F8;
+}
+
+.panel-body {
+    background-color: #D0F4F8;
+    color: #027F8B;
+}
+
 .title{
     font-size: 50px;
     color: #D0F4F8;

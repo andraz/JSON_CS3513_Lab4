@@ -1,3 +1,6 @@
+var allBooks;
+var selectedBooks;
+
 selectStylesheet = function(styleId){
     var links = $( ".style-css" );
     $(links).each(function( index ) {
@@ -12,33 +15,42 @@ menuClickAjax = function(element){
     $(element).parent().addClass("active");
 }
 
+updateContent = function(){
+    content = "";
+    $.each( allBooks, function( key, val ) {
+        content += '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">';
+        content += val.title;
+        content += '</h3></div><div class="panel-body">';
+        content += 'Panel content';
+        content += '</div></div></div></div>';
+    });
+    $("#content").html(content);
+
+}
+
 loadContent = function(file){
     var previousText = $("#content").html();
     $("#content").html("<img src='../css/ajax-loader.gif' alt='ajax_loader' class='ajaxLoader' />");
     $("#toggleButton").hide();
     var status = $("#statusLine");
-    $.get( "content/php_content/"+file, function(data) {
-        $("#content").html(data);
-        status.removeClass("alert-danger");
-        status.addClass("alert-success");
-        status.text("Successful loading page!")
-        $( "#detailedDescription" ).hide();
-        $("#toggleButton").show();
+    $.getJSON( file, function(data) {
+        allBooks = data;
+        status.removeClass("label-danger");
+        status.addClass("label-success");
+        status.text("Successful loading page!");
+        updateContent();
     })
     .fail(function() {
-        status.removeClass("alert-success");
-        status.addClass("alert-danger");
-        status.text("Fail loading page!");
         $("#content").html(previousText);
-        $("#toggleButton").show();
-    })
+        status.removeClass("label-success");
+        status.addClass("label-danger");
+        status.text("Fail loading page!");
+    });
 }
 
 $( document ).ready(function() {
     //at the beginning we disable all links, because of firefox(disabled=true doesn't work)
     selectStylesheet(0);
-    $("#toggleButton").hide();
-    loadContent("home.php");
 
     $( ".styleButton" ).click(function(){
         if(this.id == "style2"){
@@ -51,19 +63,8 @@ $( document ).ready(function() {
             selectStylesheet(0)
         }
     });
+    loadContent("books.json")
 
-    $("#toggleButton").click(function(){
-        var description = $( "#detailedDescription" );
-        var button = $("#toggleButton");
-        description.toggle( "blind",1000,function(){
-            if(description.is(":visible")){
-                button.text("Close");
-            }
-            else{
-                button.text("Read more...");
-            }
-        })
-    });
 
 
 });

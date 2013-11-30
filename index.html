@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/style3.css" class="style-css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script src="javascript/script.js" ></script>
 </head>
 <body>
@@ -31,14 +32,18 @@
 </div>
 <div class="row">
     <div class="col-md-2">
-        <div class="tab-pane" id="ajax">
-            <ul class="nav nav-pills nav-stacked" id="menuListAjax">
-                <li class="menuLink active"><a href="#"  onclick="menuClickAjax(this);loadContent('home.php')">Home</a></li>
-                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('cv.php')">CV</a></li>
-                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('personal.php')">Personal</a></li>
-                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('contact.txt')">Contact</a></li>
-                <li class="menuLink"><a href="#"  onclick="menuClickAjax(this);loadContent('links.php')">Links</a></li>
-            </ul>
+        <div class="btn-group-vertical btn-block">
+            <button type="button" class="btn btn-default btn-lg">Reload</button>
+            <button type="button" class="btn btn-default btn-lg">Sort</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle btn-lg btn-block" data-toggle="dropdown">
+                    Show &nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Only valid</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="col-md-9">
@@ -46,9 +51,16 @@
 
 
         <div class="content-my">
-            <span class="label label-success">Default</span>
+            <span id="statusLine" class="label label-success">Default</span>
             <div  id="content">
-                     Content
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -15,7 +15,9 @@ body{
 
     background-color:#F5F5F5 ;
 }
-
+.panel-default>.panel-heading{
+    color:#428bca;
+}
 /*
 .top-line{
     background-color:#E0E0E0 ;
