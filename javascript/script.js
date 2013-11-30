@@ -1,5 +1,6 @@
 var allBooks;
 var selectedBooks;
+var allTags = {};
 
 selectStylesheet = function(styleId){
     var links = $( ".style-css" );
@@ -18,13 +19,54 @@ menuClickAjax = function(element){
 updateContent = function(){
     content = "";
     $.each( allBooks, function( key, val ) {
+        tagsString = "";
+        $.each(val.tags, function(k,v){
+            allTags[v] = true;
+            if(k == 0){
+                tagsString += v;
+            }
+            else{
+                tagsString += ', '+v;
+            }
+        });
         content += '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">';
         content += val.title;
         content += '</h3></div><div class="panel-body">';
-        content += 'Panel content';
+        bookContent = ""
+        bookContent += '<dl class="dl-horizontal">';
+        bookContent += '<dt>Author</dt><dd>';
+        $.each(val.author,function(k,v){
+            if(k==0){
+                bookContent +=' '+ v.firstName + ' '+ v.lastName;
+            }
+            else{
+                bookContent += ', '+v.firstName + ' '+ v.lastName;
+            }
+        })
+        bookContent += '</dd>';
+        bookContent += '<dt>Rating</dt><dd>'
+        for(i=0; i<5; i++){
+            if(i< val.rating){
+                bookContent += '<span class="glyphicon glyphicon-star" />';
+            }
+            else{
+                bookContent += '<span class="glyphicon glyphicon-star-empty" />';
+            }
+        }
+        bookContent +='</dd>';
+
+        bookContent += '<dt>Url</dt><dd><a href="'+ val.url+'" target="_blank">'+val.url+'</a></dd>';
+        bookContent += '<dt>Valid</dt><dd>'+ val.valid+'</dd>';
+        bookContent += '<dt>Tags</dt><dd>'+ tagsString+'</dd>';
+        bookContent += '<h5>Abstract</h5>';
+        bookContent += '<p class="abstract">'+val.abstract+'</p>';
+        content += bookContent;
+
+        content
         content += '</div></div></div></div>';
     });
     $("#content").html(content);
+    $('.abstract').readmore({maxHeight: 20});
 
 }
 
@@ -63,7 +105,7 @@ $( document ).ready(function() {
             selectStylesheet(0)
         }
     });
-    loadContent("books.json")
+    loadContent("books.json");
 
 
 
