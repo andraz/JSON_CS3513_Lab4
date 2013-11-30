@@ -15,7 +15,7 @@
         "url": "http://hadoopilluminated.com/hadoop_book/singlepage/index.html#Audience",
         "rating": 2,
         "valid": false,
-        "tags": [ "Hadoop", "Big Data","Map Reduce"]
+        "tags": [ "Hadoop", "Big Data","Map Reduce","Python"]
     },
     {
         "title": "Programming Pig",

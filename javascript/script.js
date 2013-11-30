@@ -1,7 +1,6 @@
 var allBooks;
 var selectedBooks;
 var allTags = {};
-var onlyValid = false;
 selectStylesheet = function(styleId){
     var links = $( ".style-css" );
     $(links).each(function( index ) {
@@ -75,48 +74,52 @@ validateJSON = function(data){
     return isValid;
 }
 
-intersect = function intersection_destructive(a, b)
-{
-    var result = new Array();
-    while( a.length > 0 && b.length > 0 )
-    {
-        if      (a[0] < b[0] ){ a.shift(); }
-        else if (a[0] > b[0] ){ b.shift(); }
-        else /* they're equal */
+hasAnyCommonTag = function(node){
+    isActive = false;
+    $.each(node.tags,function(key, value){
+        if(allTags[value])
         {
-            result.push(a.shift());
-            b.shift();
+            isActive = true;
+            return false;
         }
-    }
-
-    return result;
+    });
+    return isActive;
 }
 
 fillTags = function(){
     content = "";
     $.each(allTags, function(key,val){
-        content += '<button type="button" class="btn btn-primary btn-xs tagButton">'+key+'</button>';
+        if(val){
+            content += '<button type="button" class="btn btn-primary btn-xs tagButton" value="'+key+'">'+key+'</button>';
+        }
+        else {
+            content += '<button type="button" class="btn btn-default btn-xs tagButton" value="'+key+'">'+key+'</button>';
+        }
     });
     $('#tagsDiv').html(content);
+
     $('.tagButton').click(function(){
         if($(this).hasClass( "btn-primary" )){
             $(this).removeClass("btn-primary");
             $(this).addClass("btn-default");
+            allTags[$(this).val()] = false;
         }
         else{
             $(this).removeClass("btn-default");
             $(this).addClass("btn-primary");
+            allTags[$(this).val()] = true;
         }
-
+        updateContent();
     });
 }
+
+
 
 updateContent = function(){
     content = "";
     $.each( selectedBooks, function( key, val ) {
         tagsString = "";
         $.each(val.tags, function(k,v){
-            allTags[v] = true;
             if(k == 0){
                 tagsString += v;
             }
@@ -124,7 +127,9 @@ updateContent = function(){
                 tagsString += ', '+v;
             }
         });
-        if(onlyValid && !val.valid){
+
+
+        if(!hasAnyCommonTag(val)){
             return true;
         }
         content += '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">';
@@ -160,13 +165,21 @@ updateContent = function(){
         bookContent += '<p class="abstract">'+val.abstract+'</p>';
         content += bookContent;
 
-        content
         content += '</div></div></div></div>';
     });
     $("#content").html(content);
     $('.abstract').readmore({maxHeight: 25});
     fillTags();
 
+}
+
+configureTags = function(){
+    $.each( selectedBooks, function( key, val ) {
+        tagsString = "";
+        $.each(val.tags, function(k,v){
+            allTags[v] = true;
+        });
+    });
 }
 
 loadContent = function(file){
@@ -181,6 +194,7 @@ loadContent = function(file){
             status.removeClass("label-danger");
             status.addClass("label-success");
             status.text("Successful loading page!");
+            configureTags();
             updateContent();
         }
         else {
@@ -200,6 +214,17 @@ loadContent = function(file){
 
 sortSelectedBooks = function(){
     selectedBooks.sort(function(a,b){return b.rating- a.rating});
+}
+
+eliminateNonValidBooks = function(){
+    selectedBooks = [];
+    i = 0;
+    $.each(allBooks,function(key, val){
+        if(val.valid){
+            selectedBooks[i] = val;
+            i ++;
+        }
+    });
 }
 
 $( document ).ready(function() {
@@ -234,13 +259,13 @@ $( document ).ready(function() {
 
     $('#showAll').click(function(evt){
         evt.preventDefault();
-        onlyValid = false;
+        selectedBooks = allBooks;
         updateContent();
     });
 
     $('#showValid').click(function(evt){
         evt.preventDefault();
-        onlyValid = true;
+        eliminateNonValidBooks();
         updateContent();
     });
 
