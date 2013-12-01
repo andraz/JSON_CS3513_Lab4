@@ -17,13 +17,13 @@
 </head>
 <body>
 <div class="row top-line">
-    <div class="col-md-5 col-md-offset-2">
+    <div class="col-md-5 col-md-offset-3">
         <div class="title">
             CMS
         </div>
 
     </div>
-    <div class="col-md-3 col-md-offset-2">
+    <div class="col-md-3 col-md-offset-1">
         <div class="btn-group pull-right">
             <button id="style1" type="button" class="btn btn-default styleButton">Style 1</button>
             <button id="style2" type="button" class="btn btn-default styleButton" >Style 2</button>
@@ -32,7 +32,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
         <div class="btn-group-vertical btn-block center">
             <button id="reloadButton" type="button" class="btn btn-default btn-lg">Reload</button>
             <button id="sortButton" type="button" class="btn btn-default btn-lg">Sort</button>
@@ -41,21 +41,35 @@
                     Show &nbsp;<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li ><a href="#" id="showAll">All</a></li>
+                    <li class="active"><a href="#" id="showAll">All</a></li>
                     <li ><a href="#" id="showValid">Only valid</a></li>
                 </ul>
             </div>
-            <div id="tagsDiv">
+            <div id="tagsDiv" class="well">
 
             </div>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
 
 
 
         <div class="content-my">
-            <span id="statusLine" class="label label-success">Default</span>
+
+
+            <form class="form-inline" role="form">
+                <label class="label label-default">Cross-domain request</label>
+                <div class="form-group">
+                    <label class="sr-only" for="jsonURL">Email address</label>
+                    <input type="urll" class="form-control" id="jsonURL" placeholder="Enter URL">
+                </div>
+
+                <button type="button" id="jsonButton" class="btn btn-default">Load JSON</button>
+                <span id="statusLine" class="label label-success">Default</span>
+            </form>
+
+
+
             <div  id="content">
                 <div class="panel panel-default">
                     <div class="panel-heading">

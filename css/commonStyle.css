@@ -15,9 +15,17 @@
 
 #tagsDiv{
     margin-top: 10px;
+
 }
 
 .tagButton {
-margin: 3px;
+    margin: 3px;
 }
+
+#statusLine{
+    position:absolute;
+    right:20px;
+}
+
+
 

@@ -174,8 +174,8 @@ updateContent = function(){
 }
 
 configureTags = function(){
+    allTags = {};
     $.each( selectedBooks, function( key, val ) {
-        tagsString = "";
         $.each(val.tags, function(k,v){
             allTags[v] = true;
         });
@@ -187,7 +187,7 @@ loadContent = function(file){
     $("#content").html("<img src='../css/ajax-loader.gif' alt='ajax_loader' class='ajaxLoader' />");
     $("#toggleButton").hide();
     var status = $("#statusLine");
-    $.getJSON( file, function(data) {
+    request = $.getJSON( file, function(data) {
         if(validateJSON(data)){
             allBooks = data;
             selectedBooks = data;
@@ -210,6 +210,17 @@ loadContent = function(file){
         status.addClass("label-danger");
         status.text("Fail loading page!");
     });
+
+    setTimeout(function(){
+        if(request.readyState != 4){
+            request.abort();
+            $("#content").html(previousText);
+            status.removeClass("label-success");
+            status.addClass("label-danger");
+            status.text("Fail loading page!");
+        }
+    }, 2000);
+
 }
 
 sortSelectedBooks = function(){
@@ -248,7 +259,6 @@ $( document ).ready(function() {
 
 
     $('#reloadButton').click(function(){
-        onlyValid = false;
         loadContent('books.json');
     });
 
@@ -260,6 +270,8 @@ $( document ).ready(function() {
     $('#showAll').click(function(evt){
         evt.preventDefault();
         selectedBooks = allBooks;
+        $('#showValid').parent().removeClass("active");
+        $(this).parent().addClass("active");
         updateContent();
     });
 
@@ -267,7 +279,14 @@ $( document ).ready(function() {
         evt.preventDefault();
         eliminateNonValidBooks();
         updateContent();
+        $('#showAll').parent().removeClass("active");
+        $(this).parent().addClass("active");
     });
+
+    $('#jsonButton').click(function(){
+        loadContent($('#jsonURL').val()+ "?callback=?");
+    })
+
 
 });
 
