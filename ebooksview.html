@@ -274,7 +274,7 @@ configureTags = function(){
 
 loadContent = function(file){
     var previousText = $("#content").html();
-    $("#content").html("<img src='../css/ajax-loader.gif' alt='ajax_loader' class='ajaxLoader' />");
+    $("#content").html("<img src='./css/ajax-loader.gif' alt='ajax_loader' class='ajaxLoader' />");
     $("#toggleButton").hide();
     var status = $("#statusLine");
     request = $.getJSON( file, function(data) {
